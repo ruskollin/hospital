@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+<title>Covid19 Ward Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/design.css"
+	th:href="@{css/design.css}" />
+
+</head>
+
+<body>
+	<!-- Header -->
+	<header>
+		<div class="patientList">
+			<a href="/patientlist" class="btn btn-success">Patient List</a>
+		</div>
+	</header>
+	<!-- EndHeader -->
+
+	<!-- Patient Information -->
+	<div class="patientInfo">
+		<p>Patient Information:</p>
+    
+		<div>
+			<p th:text="${firstName}"></p>
+		</div>
+
+	</div>
+
+	<!--Vital Signs -->
+	<section>
+		<article>
+			<h2>Vital Signs</h2>
+			<ul th:each="vital: ${vitals}">
+				<li th:text="${vital.id}"></li>
+				<li th:text="${vital.firstName}"></li>
+				<li th:text="${vital.lastName}"></li>
+				<li th:text="${vital.temp}"></li>
+				<li th:text="${vital.respiratoryRate}"></li>
+				<li th:text="${vital.pulseRate}"></li>
+				<li th:text="${vital.systolic}"></li>
+				<li th:text="${vital.diastolic}"></li>
+			</ul>
+		</article>
+
+		<!--Vital Signs -->
+		<nav>
+			<a href="/editVS" class="btn btn-success">Edit Vital Signs</a>
+		</nav>
+	</section>
+
+	<!--Doctor's Orders -->
+	<section>
+		<article>
+			<h2>Doctor's Orders</h2>
+			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+		</article>
+
+		<!--Doctor's Orders -->
+		<nav>
+			<p>Add Doctor's Orders</p>
+			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+		</nav>
+	</section>
+
+	<!--Medications -->
+	<section>
+		<article>
+			<h2>List of Medications</h2>
+			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+		</article>
+
+		<!--Medications -->
+		<nav>
+			<p>Add Medication</p>
+			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+		</nav>
+	</section>
+
+	<!--Status of Patient -->
+	<section>
+		<article>
+			<h2>Status of Patient</h2>
+			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+		</article>
+
+		<!--Discharge Form -->
+		<nav>
+			<p>Fill in Discharge Form</p>
+			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+		</nav>
+	</section>
+
+	<!-- Footer -->
+	<div class="demog">
+		<h2>Demographical Status of Patients</h2>
+	</div>
+
+	<!-- End Page -->
+</body>
+</html>
