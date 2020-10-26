@@ -26,10 +26,10 @@ public class HospitalApplication {
 			// Database is created by using resources/schema.sql
 			
 			log.info("save info of patients");
-			prepository.save(new Patient("John", "West", 22, "Male", "COVID-19 with Asthma", "International Travel"));
-			prepository.save(new Patient("Mickey", "East", 54, "Male", "COVID-19 with Diabetes", "Contact with Known Case"));
-			prepository.save(new Patient("Jane", "North", 32, "Female", "COVID-19", "Workplace Transmission"));
-			prepository.save(new Patient("Delilah", "South", 42, "Female", "COVID-19", "Community Transmission"));     
+			prepository.save(new Patient("Argus", "Filch", 22, "Male", "COVID-19 with Asthma", "International Travel"));
+			prepository.save(new Patient("Filius", "Flitwick", 54, "Male", "COVID-19 with Diabetes", "Contact with Known Case"));
+			prepository.save(new Patient("Poppy", "Pomfrey", 32, "Female", "COVID-19", "Workplace Transmission"));
+			prepository.save(new Patient("Pomona", "Sprout", 42, "Female", "COVID-19", "Community Transmission"));     
 			
 			log.info("fetch all patients");
 			for (Patient patient : prepository.findAll()) {

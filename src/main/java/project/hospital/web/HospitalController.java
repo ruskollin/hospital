@@ -64,7 +64,7 @@ public class HospitalController {
     	model.addAttribute("patient", repository.findById(patientId));
         return "homepage";
     } 
-      
+    
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deletePatient(@PathVariable("id") Integer patientId, Model model) {
     	repository.deleteById(patientId);
@@ -74,6 +74,7 @@ public class HospitalController {
     @RequestMapping(value = "/modify/{id}", method = RequestMethod.GET)
     public String editPatient(@PathVariable("id") Integer patientId, Model model) {
     	model.addAttribute("patient", repository.findById(patientId));
+    	repository.deleteById(patientId);
     	return "modifyPatient";
     }  
     

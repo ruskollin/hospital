@@ -29,25 +29,12 @@ public class Patient {
 	    private Vitals vitals;
 	
 	public Patient() {
-		this.id=0;
 		this.firstName= null;
 		this.lastName= null;
 		this.age= 0;
 		this.sex= null;
 		this.diagnosis= null;
 		this.modeOfTransmission= null;
-	}
-
-
-	public Patient(int id, String firstName, String lastName, int age, String sex, String diagnosis, String modeOfTransmission) {
-		super();
-		this.id=id;
-		this.firstName=firstName;
-		this.lastName=lastName;
-		this.age=age;
-		this.sex=sex;
-		this.diagnosis=diagnosis;
-		this.modeOfTransmission=modeOfTransmission;
 	}
 	
 	public Patient(String firstName, String lastName, int age, String sex, String diagnosis, String modeOfTransmission) {
@@ -57,14 +44,6 @@ public class Patient {
 		this.sex=sex;
 		this.diagnosis=diagnosis;
 		this.modeOfTransmission=modeOfTransmission;
-	}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
