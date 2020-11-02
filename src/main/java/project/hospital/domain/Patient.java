@@ -14,7 +14,7 @@ public class Patient {
 	
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-	public int id;
+	public Long id;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -26,7 +26,7 @@ public class Patient {
 	@JoinColumn(name = "vitalId")
 	@JsonManagedReference
 	 
-	    private Vitals vitals;
+	private Vitals vitals;
 	
 	public Patient() {
 		this.firstName= null;

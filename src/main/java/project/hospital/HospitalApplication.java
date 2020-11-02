@@ -5,15 +5,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import project.hospital.domain.Patient;
 import project.hospital.domain.PatientRepository;
-import project.hospital.domain.User;
+import project.hospital.domain.UserClass;
 import project.hospital.domain.UserRepository;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication
 public class HospitalApplication {
 	private static final Logger log = LoggerFactory.getLogger(HospitalApplication.class);
 	public static void main(String[] args) {
@@ -26,6 +25,7 @@ public class HospitalApplication {
 			// Database is created by using resources/schema.sql
 			
 			log.info("save info of patients");
+			prepository.deleteAll();
 			prepository.save(new Patient("Argus", "Filch", 22, "Male", "COVID-19 with Asthma", "International Travel"));
 			prepository.save(new Patient("Filius", "Flitwick", 54, "Male", "COVID-19 with Diabetes", "Contact with Known Case"));
 			prepository.save(new Patient("Poppy", "Pomfrey", 32, "Female", "COVID-19", "Workplace Transmission"));
@@ -37,8 +37,9 @@ public class HospitalApplication {
 			}
 			
 			// Create users: admin/admin user/user
-			User user1 = new User("cat", "$2y$12$REhu9711ZeCHEOImaNFLvOgYf5ZCVpQl3FJz8FU/NrAaRFQsu6.5C", "USER");
-			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			urepository.deleteAll();
+			UserClass user1 = new UserClass("cat", "$2y$12$REhu9711ZeCHEOImaNFLvOgYf5ZCVpQl3FJz8FU/NrAaRFQsu6.5C", "USER");
+			UserClass user2 = new UserClass("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
 		};

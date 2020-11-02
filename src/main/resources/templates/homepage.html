@@ -3,8 +3,10 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 
-<title>Covid19 Ward Home</title>
+<title>Covid</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
 <link type="text/css" rel="stylesheet" href="/css/design.css"
 	th:href="@{css/design.css}" />
 
@@ -22,16 +24,13 @@
 	<!-- Patient Information -->
 	<div class="patientInfo">
 		<p>Patient Information:</p>
-    
-		<div>
-			<p th:text="${id}"></p>
-			<p th:text="${firstName}"></p>
-			<p th:text="${lastName}"></p>
-			<p th:text="${age}"></p>
-			<p th:text="${sex}"></p>
-			<p th:text="${diagnosis}"></p>
-			<p th:text="${modeOfTransmission}"></p>
-		</div>
+
+		<p th:text="${id}"></p>
+		
+		<p th:text="${firstName}"></p>
+	
+		<p th:text="${patient}"></p>
+
 
 	</div>
 
@@ -53,7 +52,7 @@
 
 		<!--Vital Signs -->
 		<nav>
-			<a href="/editVS" class="btn btn-success">Edit Vital Signs</a>
+			<a href="/editVs" class="btn btn-success">Edit Vital Signs</a>
 		</nav>
 	</section>
 
