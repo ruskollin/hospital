@@ -3,6 +3,8 @@
 <head>
     <title>Patient List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	 <link type="text/css" rel="stylesheet" href="/css/design.css" th:href="@{css/design.css}" />
 </head>
 <body>
 	<h1>Add patient</h1>
@@ -21,8 +23,8 @@
 			<input type="text" id="age" th:field="*{age}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-		  	<label for="sex">Sex</label>
-			<input type="radio" id="sex" th:field="*{sex}" value="Male"/> Male
+		  	<label for="sex">Sex</label><br>
+			<input type="radio" id="sex" th:field="*{sex}" value="Male"/> Male <br>
 			<input type="radio" id="sex" th:field="*{sex}" value="Female"/> Female <br/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
@@ -30,10 +32,10 @@
 			<input type="text" id="diagnosis" th:field="*{diagnosis}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-		  	<label for="mode">Mode Of Transmission</label>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Community"/> Community
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Workplace"/> Workplace <br/>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="International Travel"/> International Travel
+		  	<label for="mode">Mode Of Transmission</label> <br>
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Community"/> Community <br>
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Workplace"/> Workplace <br>
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="International Travel"/> International Travel <br>
 			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Contact with Known Case"/> Contact with Known Case <br/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			

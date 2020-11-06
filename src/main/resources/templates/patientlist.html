@@ -10,6 +10,7 @@
 <body>
 	</br>
     <h1>Confirmed Cases</h1> 
+    <p th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}"></p>
     <table class="table table-striped">
 		<tr>
 			<th><strong>Id</strong></th>

@@ -25,7 +25,7 @@ public class HospitalApplication {
 			// Database is created by using resources/schema.sql
 			
 			log.info("save info of patients");
-			prepository.deleteAll();
+			
 			prepository.save(new Patient("Argus", "Filch", 22, "Male", "COVID-19 with Asthma", "International Travel"));
 			prepository.save(new Patient("Filius", "Flitwick", 54, "Male", "COVID-19 with Diabetes", "Contact with Known Case"));
 			prepository.save(new Patient("Poppy", "Pomfrey", 32, "Female", "COVID-19", "Workplace Transmission"));
@@ -37,7 +37,7 @@ public class HospitalApplication {
 			}
 			
 			// Create users: admin/admin user/user
-			urepository.deleteAll();
+			
 			UserClass user1 = new UserClass("cat", "$2y$12$REhu9711ZeCHEOImaNFLvOgYf5ZCVpQl3FJz8FU/NrAaRFQsu6.5C", "USER");
 			UserClass user2 = new UserClass("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
 			urepository.save(user1);
