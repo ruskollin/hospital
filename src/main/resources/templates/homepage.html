@@ -5,19 +5,15 @@
 
 <title>Covid</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}" />
-<link type="text/css" rel="stylesheet" href="/css/design.css"
-	th:href="@{css/design.css}" />
-
+     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	 <link rel="stylesheet" th:href="@{/css/design.css}" />
 </head>
 
 <body>
 	<!-- Header -->
 	<header>
-		<div class="patientList">
-			<a href="/patientlist" class="btn btn-success">Patient List</a>
-		</div>
+			<a href="/patientlist" class="btn btn-info">Patient List</a>
+			<a href="/logout" class="btn btn-danger">Logout</a>
 	</header>
 	<!-- EndHeader -->
 
@@ -26,8 +22,7 @@
 		<p>Patient Information:</p>
 
 		<p th:text="${id}"></p>
-		
-		<p th:text="${sex}"></p>
+
 	
 		<p th:text="${patient}"></p>
 
@@ -48,8 +43,9 @@
 				<li th:text="${vital.systolic}"></li>
 				<li th:text="${vital.diastolic}"></li>
 			</ul>
+				</br> </br> </br> </br> </br> </br> </br> </br> </br>
 		</article>
-
+	
 		<!--Vital Signs -->
 		<nav>
 			<a href="/editVs" class="btn btn-success">Edit Vital Signs</a>
@@ -65,8 +61,7 @@
 
 		<!--Doctor's Orders -->
 		<nav>
-			<p>Add Doctor's Orders</p>
-			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+			<a href="/addOrders" class="btn btn-success">Add Doctor's Orders</a>
 		</nav>
 	</section>
 
@@ -79,8 +74,7 @@
 
 		<!--Medications -->
 		<nav>
-			<p>Add Medication</p>
-			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+			<a href="/addMeds" class="btn btn-success">Add Medications</a>
 		</nav>
 	</section>
 
@@ -93,8 +87,7 @@
 
 		<!--Discharge Form -->
 		<nav>
-			<p>Fill in Discharge Form</p>
-			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+			<a href="/dischargeForm" class="btn btn-success">Fill Discharge Form</a>
 		</nav>
 	</section>
 

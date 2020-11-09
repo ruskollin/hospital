@@ -1,39 +1,53 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Patient List</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-    <link type="text/css" rel="stylesheet" href="/css/design.css" th:href="@{css/design.css}" />
-	
+<title>Patient List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+	 <link rel="stylesheet" th:href="@{css/design.css}" />
 </head>
 <body>
-	</br>
-    <h1>Confirmed Cases</h1> 
-    <p th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}"></p>
-    <table class="table table-striped">
+	<div class="pageTitle">
+		<div class="pageTit">
+			<br>
+			<h1>Confirmed Cases</h1>
+		</div>
+		<div class="pageTit1">
+			<p th:text="${#lists.size(patients)}">[Patients]</p>	
+		</div>
+		<div class="pageTit">
+			<br>
+			<p th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}">
+		</div>
+	</div>
+
+
+	<table class="table table-striped">
 		<tr>
 			<th><strong>Id</strong></th>
-		    <th><strong>Name</strong></th>
-		    <th><strong>Age</strong></th>
-		    <th><strong>Sex</strong></th>
-		    <th><strong>Diagnosis</strong></th>
-		    <th><strong>Mode of Transmission</strong></th>
-		    <th></th>
-		    <th></th>
-		</tr>  
-    	<tr th:each = "patient : ${patients}">
-    		<td th:text="${patient.id}"></td>
-    		<td><a th:href="@{/show/{id}(id=${patient.id})}" th:text="${patient.firstName} + ' ' + ${patient.lastName}"></a></td> 
-    		<td th:text="${patient.age}"></td>
-    		<td th:text="${patient.sex}"></td>  		
-    		<td th:text="${patient.diagnosis}"></td> 
-    		<td th:text="${patient.modeOfTransmission}"></td> 
-    		<td><a th:href="@{/delete/{id}(id=${patient.id})}"  class="btn btn-danger">Delete</a></td>    		
-    		<td><a th:href="@{/modify/{id}(id=${patient.id})}"  class="btn btn-warning">Modify</a></td>    
-    	</tr>
-     </table> 	
-     <a href="/add" class="btn btn-success">Add Patient</a>
-     
+			<th><strong>Name</strong></th>
+			<th><strong>Age</strong></th>
+			<th><strong>Sex</strong></th>
+			<th><strong>Diagnosis</strong></th>
+			<th><strong>Mode of Transmission</strong></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr th:each="patient : ${patients}">
+			<td th:text="${patient.id}"></td>
+			<td><a th:href="@{/show/{id}(id=${patient.id})}"
+				th:text="${patient.firstName} + ' ' + ${patient.lastName}"></a></td>
+			<td th:text="${patient.age}"></td>
+			<td th:text="${patient.sex}"></td>
+			<td th:text="${patient.diagnosis}"></td>
+			<td th:text="${patient.modeOfTransmission}"></td>
+			<td><a th:href="@{/delete/{id}(id=${patient.id})}"
+				class="btn btn-danger">Delete</a></td>
+			<td><a th:href="@{/modify/{id}(id=${patient.id})}"
+				class="btn btn-warning">Modify</a></td>
+		</tr>
+	</table>
+	<a href="/add" class="btn btn-success">Add Patient</a>
+
 </body>
 </html>

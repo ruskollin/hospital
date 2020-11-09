@@ -1,17 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">  
+
 <head>
     <title>Modify Patient Info</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-	 	 <link type="text/css" rel="stylesheet" href="/css/design.css" th:href="@{css/design.css}" />
+     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	 <link rel="stylesheet" th:href="@{/css/design.css}" />
 </head>
 
 <body>
-	
-	<div class="container" style="margin:auto">
-		<div class="col-md-4" style="margin:auto; color: red">
-			
+	<div class="centered">
+	<h1>Edit patient details</h1>
 		<form th:object="${patient}" th:action="@{/process}" action="#" method="get">
 		
 			<label for="firstName">First Name</label>
@@ -25,23 +24,25 @@
 		  	<label for="age">Age</label>
 			<input type="text" id="age" th:field="*{age}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	
-		  	<label for="sex">Sex</label>
-			<input type="radio" id="sex" th:field="*{sex}" value="Male"/> Male
-			<input type="radio" id="sex" th:field="*{sex}" value="Female"/> Female <br/>
-			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="diagnosis">Diagnosis</label>
 			<input type="text" id="diagnosis" th:field="*{diagnosis}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="sex">Sex</label><br/>
+			<input type="radio" id="sex" th:field="*{sex}" value="Male"/> Male <br/>
+			<input type="radio" id="sex" th:field="*{sex}" value="Female"/> Female <br/>
+			<div style="clear: both; display: block; height: 10px;"></div>
 			
-			<label for="modeOfTransmission">Mode of Transmission</label>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Community"/> Community
+			
+			<label for="modeOfTransmission">Mode of Transmission</label> <br/>
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Community"/> Community <br/>
 			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Workplace"/> Workplace <br/>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="International Travel"/> International Travel
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="International Travel"/> International Travel <br/>
 			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Contact with Known Case"/> Contact with Known Case <br/>
-			<div style="clear: both; display: block; height: 10px;"></div>						
-			<button type="submit" value="Save">Save</button>
+			<div style="clear: both; display: block; height: 10px;"></div>	
+			<br>					
+			<input type="submit" value="Save"></input>
 		</form>
 		</div>
 	</div>

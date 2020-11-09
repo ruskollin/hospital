@@ -29,12 +29,7 @@ public class Patient {
 	private Vitals vitals;
 	
 	public Patient() {
-		this.firstName= null;
-		this.lastName= null;
-		this.age= 0;
-		this.sex= null;
-		this.diagnosis= null;
-		this.modeOfTransmission= null;
+		super();
 	}
 	
 	public Patient(String firstName, String lastName, int age, String sex, String diagnosis, String modeOfTransmission) {
@@ -93,6 +88,7 @@ public class Patient {
 	public void setModeOfTransmission(String modeOfTransmission) {
 		this.modeOfTransmission = modeOfTransmission;
 	}
+	
 	
 	@Override
 	public String toString() {

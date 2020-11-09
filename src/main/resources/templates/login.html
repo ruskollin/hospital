@@ -5,25 +5,36 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<head>
     	<title>Spring Security Example </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
-    	 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-    	<link type="text/css" rel="stylesheet" href="/css/design.css" th:href="@{css/design.css}" />
-   	</head>
+        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+	 	<link rel="stylesheet" th:href="@{css/design.css}" /></head>
     <body>
-        <!--<div th:if="${param.error}">
-            Invalid username and password.
-        </div>-->
+    	
+    	<div class="centered">
         <div th:if="${param.logout}">
             You have been logged out.
         </div>
-                  	
+        
+        
+        <div class="containerLog">
         	<form th:action="@{/login}" method="post">
-            	<input type="text" name="username" placeholder="Username"/> <br />
-            	<input type="password" name="password" placeholder="Password"/> <br />
+        		<div class="fields">
+      				<span>
+            			<input type="text" name="username" placeholder="Username"/> <br />
+            		</span>
+            		<br />
+     				<span>
+            			<input type="password" name="password" placeholder="Password"/> <br />
+            		</span>
+            	</div>
+            	<br>
             	<button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
         	</form>
-        	
-        	<p>Your name is cat</p> </ br>
-        	<p>The password is password</p>
-       
+        </div>
+        <br>
+        <div class="containerLog">
+        	<p style="font-size: 10px">Your name is cat</p>
+        	<p style="font-size: 10px">The password is password</p>
+       </div>
+       </div>
     </body>
 </html>

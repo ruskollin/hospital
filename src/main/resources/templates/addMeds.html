@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+	 	<link rel="stylesheet" th:href="@{css/design.css}" />
+</head>
+<body>
+	
+	<div class="centered">
+	<h1>Add Medications</h1>
+		<form id="usrformMeds">
+			<span contenteditable="true"> 
+				<label for="note">Order</label>
+				<input type="text" id="note"
+				style="height: 500px; margin: auto; width: 400px; font-size: 14pt" />
+			</span>
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<br> <input type="submit" value="Save Medication Order"></input>
+		</form>
+	</div>
+</body>
+</html>

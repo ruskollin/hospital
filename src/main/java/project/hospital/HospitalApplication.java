@@ -11,16 +11,19 @@ import project.hospital.domain.Patient;
 import project.hospital.domain.PatientRepository;
 import project.hospital.domain.UserClass;
 import project.hospital.domain.UserRepository;
+import project.hospital.domain.Vitals;
+import project.hospital.domain.VitalsRepository;
 
 @SpringBootApplication
 public class HospitalApplication {
 	private static final Logger log = LoggerFactory.getLogger(HospitalApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(HospitalApplication.class, args);
 	}
 	
 	@Bean
-	public CommandLineRunner demo(PatientRepository prepository, UserRepository urepository) {
+	public CommandLineRunner demo(PatientRepository prepository, VitalsRepository vrepository, UserRepository urepository) {
 		return (args) -> {
 			// Database is created by using resources/schema.sql
 			
@@ -30,6 +33,13 @@ public class HospitalApplication {
 			prepository.save(new Patient("Filius", "Flitwick", 54, "Male", "COVID-19 with Diabetes", "Contact with Known Case"));
 			prepository.save(new Patient("Poppy", "Pomfrey", 32, "Female", "COVID-19", "Workplace Transmission"));
 			prepository.save(new Patient("Pomona", "Sprout", 42, "Female", "COVID-19", "Community Transmission"));     
+			
+			log.info("vital signs of patients");
+			
+			vrepository.save(new Vitals("Argus", "Filch", 37.2, 13, 70, 120, 80));
+			vrepository.save(new Vitals("Filius", "Flitwick", 36.6, 23, 79, 130, 90));
+			vrepository.save(new Vitals("Poppy", "Pomfrey", 37.7, 20, 90, 110, 70));
+			vrepository.save(new Vitals("Pomona", "Sprout", 37.5, 17, 85, 100, 70));     
 			
 			log.info("fetch all patients");
 			for (Patient patient : prepository.findAll()) {

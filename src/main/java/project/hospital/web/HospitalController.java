@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.hospital.domain.Patient;
 import project.hospital.domain.PatientRepository;
+import project.hospital.domain.VitalsRepository;
 
 @Controller
 public class HospitalController {
 	
 	@Autowired
 	private PatientRepository repository;
+	
+	@Autowired
+	private VitalsRepository vrepository;
 	
 	@RequestMapping(value={"/", "/home"})
 	public String homepage() {
@@ -74,7 +78,6 @@ public class HospitalController {
     @RequestMapping(value = "/modify/{id}", method = RequestMethod.GET)
     public String editPatient(@PathVariable("id") Long patientId, Model model) {
     	model.addAttribute("patient", repository.findById(patientId));
-    	repository.deleteById(patientId);
     	return "modifyPatient";
     }  
     
@@ -87,5 +90,25 @@ public class HospitalController {
 	@RequestMapping(value="/editVs")
 	public String editVitals() {
 		return "editVs";
+	} 
+	
+	@RequestMapping(value="/addMeds")
+	public String addMedications() {
+		return "addMeds";
+	} 
+	
+	@RequestMapping(value="/addOrders")
+	public String addOrders() {
+		return "addOrders";
+	} 
+	
+	@RequestMapping(value="/dischargeForm")
+	public String dischargeForm() {
+		return "dischargeForm";
+	} 
+	
+	@RequestMapping(value="/logout")
+	public String logout() {
+		return "logout";
 	} 
 }

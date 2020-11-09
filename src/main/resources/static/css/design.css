@@ -5,6 +5,72 @@
 body {
 	font-family: 'Overlock SC', Arial, Helvetica, sans-serif;
 	background-color: #CCDDDD;
+	background-image: url("/images/white.jpeg");
+	background-size: cover;
+	counter-reset: section;
+}
+
+.centered {
+  position: fixed;
+  top: 10%;
+  left: 20%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+.containerLog{
+  text-align:center;
+}
+
+.containerLog form span:before {
+  counter-increment: section;
+  content:counter(section);
+  border:2px solid #4c2639;
+  width:47px;
+  height:46.5px;
+  color:#00FFFF;
+  display:inline-block;
+  border-radius:40%;
+  line-height:1.6em;
+  font-size:1.5em;
+  position:relative;
+  left:-24.5px;
+  top:-10px;
+  background:#2F1E27;
+}
+
+form{
+  margin-top:25px;
+  display:inline-block;
+}
+
+input {
+  border:none;
+  outline:none;
+  float: right;
+  height:34px;
+  vertical-align:middle;
+  position:relative;
+  bottom:14px;
+  left:50px;
+  border-radius:22px;
+  width:220px;
+  box-sizing:border-box;
+  padding:0 18px; 
+}
+
+label {
+    display: inline-block;
+    clear: left;
+    width: 250px;
+    text-indent: -2em;
+}
+
+input[type="radio"] {
+  margin-top: 1px;
+  margin-left: 20px;
+  vertical-align: right;
+  display:inline-block;
 }
 
 .dropbtn {
@@ -21,6 +87,39 @@ body {
 	cursor: pointer;
 }
 
+.pageTit {
+  float: left;
+  width: 33.33%;
+  color: dark blue;
+  font-size: 21px;
+  text-align:center;
+}
+
+.pageTit1 {
+  float: left;
+  width: 33.33%;
+  font-size: 21px;
+  text-align:center;
+  color: red; 
+  border-style: inset; 
+  font-weight: bold; 
+  width:33.33%;
+  height: 100px;
+  line-height: 100px;
+  font-size: 50px;
+  background: #000
+}
+
+/* Clear floats after the columns */
+.pageTitle:after {
+  content: "";
+  display: table;
+  clear: both;
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  border-radius: 50%;
+}
 
 .patientList {
 	position: relative;
@@ -122,7 +221,6 @@ td a {
 nav {
 	float: left;
 	width: 30%;
-	background: #AABCC6;
 	padding: 20px;
 	margin: auto;
 }
