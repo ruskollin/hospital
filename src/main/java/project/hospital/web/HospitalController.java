@@ -25,12 +25,7 @@ public class HospitalController {
 	@Autowired
 	private VitalsRepository vrepository;
 	
-	@RequestMapping(value={"/", "/home"})
-	public String homepage() {
-		return "homepage";
-	} 
-	
-	@RequestMapping(value="/login")
+	@RequestMapping(value={"/login", "/", "/home"})
 	public String login() {
 		return "login";
 	} 
@@ -65,7 +60,9 @@ public class HospitalController {
     
     @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
     public String showPatient(@PathVariable("id") Long patientId, Model model) {
-    	model.addAttribute("patient", repository.findById(patientId));
+    	Optional<Patient> optionalPatient = repository.findById(patientId);
+    	Patient patient = optionalPatient.get();
+    	model.addAttribute("patient", patient);
         return "homepage";
     } 
     
