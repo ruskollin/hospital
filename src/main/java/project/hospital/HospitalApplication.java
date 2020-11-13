@@ -47,7 +47,7 @@ public class HospitalApplication {
 			}
 			
 			// Create users: admin/admin user/user
-			
+			urepository.deleteAll();
 			UserClass user1 = new UserClass("cat", "$2y$12$REhu9711ZeCHEOImaNFLvOgYf5ZCVpQl3FJz8FU/NrAaRFQsu6.5C", "USER");
 			UserClass user2 = new UserClass("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
 			urepository.save(user1);
