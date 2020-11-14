@@ -20,11 +20,13 @@
 	<!-- Patient Information -->
 	<div class="patientInfo">
 		<p>Patient Information:</p>
-
-		<p th:text="${id}"></p>
-		<p th:text="${firstName}"></p>
 	
 		<p th:text="${patient.firstName}"></p>
+		<p th:text="${patient.lastName}"></p>
+		<p th:text="${patient.age}"></p>
+		<p th:text="${patient.sex}"></p>
+		<p th:text="${patient.diagnosis}"></p>
+		<p th:text="${patient.modeOfTransmission}"></p>
 
 
 	</div>
