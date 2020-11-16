@@ -46,7 +46,15 @@ public class Vitals {
 		this.diastolic = diastolic;
 	}
 
+	public Long getVitalId() {
+		return vitalId;
+	}
 
+
+	public void setVitalId(Long vitalId) {
+		this.vitalId = vitalId;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}

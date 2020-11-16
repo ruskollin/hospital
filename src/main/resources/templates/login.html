@@ -6,7 +6,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     	<title>Spring Security Example </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
         <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
-	 	<link rel="stylesheet" th:href="@{css/design.css}" /></head>
+	 	<link rel="stylesheet" th:href="@{css/design.css}" />
+	</head>
     <body>
     	
     	<div class="centered">
@@ -29,12 +30,19 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
             	<br>
             	<button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
         	</form>
+        	
+        	
         </div>
         <br>
         <div class="containerLog">
         	<p style="font-size: 10px">Your name is cat</p>
         	<p style="font-size: 10px">The password is password</p>
        </div>
+       
+       	<div style="padding: 20%">
+       		<a class="btn btn-primary btn-block btn-large" th:href="@{/signup}">Sign-up</a>
+		</div>
+       
        </div>
     </body>
 </html>

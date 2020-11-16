@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Sign Up</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+	 <link rel="stylesheet" th:href="@{css/design.css}" />	
+</head>
+<body>
+<div class="centered">
+	<div>
+		<h1 style="text-align:center">User List</h1><br><br>
+		<h1 th:inline="text" style="text-align:center;  text-transform: uppercase;">Welcome [[${#httpServletRequest.remoteUser}]]</h1><br><br>
+	</div>
+	
+    <table class="table table-striped">
+		<tr>
+		    <th>Username</th>
+		     <th>Role</th>
+		    <th> </th>
+		</tr>  
+    	<tr th:each = "userClass : ${userClasses}">
+    		<td th:text="${userClass.username}"></td>
+    		<td th:text="${userClass.role}"></td>	
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteUser/{userId}(userId=${userClass.userId})}" class="btn btn-xs btn-danger">Delete</a></td>    		
+    	</tr>
+     </table> <br><br>
+     <div style="justify-content: center; display: flex">
+		<a href="/addUser" class="btn btn-primary">Add User</a> 
+	</div>
+
+	 <div style="left: 110px"><br><br><br><br>
+		<form th:action="@{/logout}" method="post">
+			<input style="left: 45%"  type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+</div>	    	
+</body>
+</html>

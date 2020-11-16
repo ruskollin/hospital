@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+	 	<link rel="stylesheet" th:href="@{css/design.css}" />
+</head>
+<body>
+	
+	<div class="centered">
+		<h1>Edit Vital Signs</h1>
+		<form>
+
+		  	<label for="temp">Temperature</label>
+			<input type="number" id="temp" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="respiratoryRate">Respiratory Rate</label>
+			<input type="number" id="respiratoryRate" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="pulseRate">Pulse Rate</label>
+			<input type="number" id="pulseRate"  />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="systolic">Systolic Blood Pressure</label>
+			<input type="number" id="systolic"  />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="diastolic">Diastolic Blood Pressure</label>
+			<input type="number" id="diastolic" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<br>
+			
+			<input type="submit" value="Save Vitals"></input>
+		</form>
+	</div>
+</body>
+</html>

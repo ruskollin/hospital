@@ -97,7 +97,6 @@ public class Patient {
 		this.modeOfTransmission = modeOfTransmission;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "Patient [id =" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", sex=" + sex + ", diagnosis=" + diagnosis + ", modeOfTransmission=" + modeOfTransmission + "]";

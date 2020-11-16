@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.hospital.domain.Patient;
 import project.hospital.domain.PatientRepository;
+import project.hospital.domain.UserClass;
+import project.hospital.domain.UserRepository;
+import project.hospital.domain.Vitals;
 import project.hospital.domain.VitalsRepository;
 
 @Controller
@@ -24,6 +27,9 @@ public class HospitalController {
 	
 	@Autowired
 	private VitalsRepository vrepository;
+	
+	@Autowired
+	private UserRepository urepository;
 	
 	@RequestMapping(value={"/login", "/", "/home"})
 	public String login() {
@@ -64,6 +70,14 @@ public class HospitalController {
     	Patient patient = optionalPatient.get();
     	model.addAttribute("patient", patient);
         return "homepage";
+    } 
+    
+    @RequestMapping(value = "/release/{vitalId}", method = RequestMethod.GET)
+    public String releaseVitals(@PathVariable("vitalId") Long vitalId, Model model) {
+    	Optional<Vitals> optionalVitals = vrepository.findById(vitalId);
+    	Vitals vitals = optionalVitals.get();
+    	model.addAttribute("vitals", vitals);
+        return "vitals";
     } 
     
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -108,4 +122,28 @@ public class HospitalController {
 	public String logout() {
 		return "logout";
 	} 
+	
+    @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+    public String saveUser(UserClass userClass){
+        urepository.save(userClass);
+        return "redirect:userlist";
+    }  
+    
+	@RequestMapping(value="/addUser")
+	public String goToAddUser(Model model) {
+		model.addAttribute("userClass", new UserClass());
+		return "addUser";
+	} 
+    
+    @RequestMapping(value="/userlist")
+    public String userList(Model model) {	
+        model.addAttribute("userClasses", urepository.findAll());
+        return "userlist";
+    }
+    
+    @RequestMapping(value = "/deleteUser/{userId}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("userId") Long userId, Model model) {
+    	urepository.deleteById(userId);
+        return "redirect:../userlist";
+    } 
 }

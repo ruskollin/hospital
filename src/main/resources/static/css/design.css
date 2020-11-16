@@ -10,6 +10,19 @@ body {
 	counter-reset: section;
 }
 
+.panel {
+  float: left;
+  width: 50%;
+  margin: auto;  
+}
+
+.patientInfo {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  height: 300px;
+}
+
 .centered {
   position: fixed;
   top: 10%;

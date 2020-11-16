@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add User</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+	 <link rel="stylesheet" th:href="@{css/design.css}" />
+</head>
+<body>
+	<div class="centered">
+		<h1>Sign Up</h1>
+		
+		<div>
+			<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+			
+			<label> Username :<input style="left: 100%" type="text" th:field="*{username}"/></label>
+			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">UsernamemError</p>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
+			<label> Password :<input style="left: 100%"  type="password" th:field="*{password}"/></label>
+			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			
+			<label> Re-type Password: <input style="left: 100%" type="password" th:field="*{passwordCheck}"/></label>
+			<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+
+			<div style="padding: 20%">
+				<input type="submit" class="btn btn-primary" value="Sign Up"></input>
+			</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

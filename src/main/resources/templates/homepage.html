@@ -5,36 +5,42 @@
 
 <title>Covid</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-	 <link rel="stylesheet" th:href="@{/css/design.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/design.css}" />
 </head>
 
 <body>
 	<!-- Header -->
 	<header>
-			<a href="/patientlist" class="btn btn-info">Patient List</a>
-			<a href="/logout" class="btn btn-danger">Logout</a>
+		<a href="/patientlist" class="btn btn-info">Patient List</a> 
+		<a href="/logout" class="btn btn-danger">Sign Out</a>
 	</header>
 	<!-- EndHeader -->
 
 	<!-- Patient Information -->
-	<div class="patientInfo">
+	<br>
+	<div class="patientInfo" style="text-align: center">
+		
 		<p>Patient Information:</p>
-	
-		<p th:text="${patient.firstName}"></p>
-		<p th:text="${patient.lastName}"></p>
-		<p th:text="${patient.age}"></p>
-		<p th:text="${patient.sex}"></p>
-		<p th:text="${patient.diagnosis}"></p>
-		<p th:text="${patient.modeOfTransmission}"></p>
 
-
+		<h1 th:text="${patient.firstName} +' '+ ${patient.lastName}"></h1> <br>
+		
+		<div class="panel">
+			<p style="font-size:20px"> Age: <span th:text="${patient.age}"></span></p>
+			<p style="font-size:20px"> Sex: <span th:text="${patient.sex}"></span></p>
+		</div>
+		<div class="panel">
+			<p style="font-size:20px"> Diagnosis: <span th:text="${patient.diagnosis}"></span></p>
+			<p style="font-size:20px"> Mode of Transmission: <span th:text="${patient.modeOfTransmission}"></span></p>
+		</div>
 	</div>
 
 	<!--Vital Signs -->
 	<section>
 		<article>
 			<h2>Vital Signs</h2>
+			<a href="@{/release/{vitalId}(vitalId=${vitals.vitalId})}">Vitals</a>
+			
 			<ul th:each="vital: ${vitals}">
 				<li th:text="${vital.id}"></li>
 				<li th:text="${vital.firstName}"></li>
@@ -45,9 +51,9 @@
 				<li th:text="${vital.systolic}"></li>
 				<li th:text="${vital.diastolic}"></li>
 			</ul>
-				</br> </br> </br> </br> </br> </br> </br> </br> </br>
+			</br> </br> </br> </br> </br> </br> </br> </br> </br>
 		</article>
-	
+
 		<!--Vital Signs -->
 		<nav>
 			<a href="/editVs" class="btn btn-success">Edit Vital Signs</a>
@@ -89,7 +95,8 @@
 
 		<!--Discharge Form -->
 		<nav>
-			<a href="/dischargeForm" class="btn btn-success">Fill Discharge Form</a>
+			<a href="/dischargeForm" class="btn btn-success">Fill Discharge
+				Form</a>
 		</nav>
 	</section>
 
