@@ -18,7 +18,7 @@
 					<li class="active"><a style="color: orange; font-weight: bold"
 						th:text="${patient.firstName} +' '+ ${patient.lastName}"></a></li>
 					<li><a href="/patientlist">Patient List</a></li>
-					<li><a href="/userlist">User List</a></li>
+					<li sec:authorize="hasAuthority('ADMIN')"><a href="/userlist">User List</a></li>
 					<li><a href="/profile">Profile</a></li>
 					<li><a href="/logout">Sign Out</a></li>
 				</ul>

@@ -12,7 +12,7 @@
     <nav class="nav">
       <ul>
         <li><a href="/patientlist">Patient List</a></li>
-        <li><a href="/userlist">User List</a></li>
+        <li sec:authorize="hasAuthority('ADMIN')"><a href="/userlist">User List</a></li>
         <li class="active"><a href="/profile">Profile</a></li>
         <li><a href="/logout">Sign Out</a></li>
       </ul>
