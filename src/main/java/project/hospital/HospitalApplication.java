@@ -39,9 +39,9 @@ public class HospitalApplication {
 			log.info("save info of patients");
 			prepository.deleteAll();
 			prepository.save(new Patient("Argus", "Filch", 22, "Male", "COVID-19 with Asthma", "International Travel", crepository.findByName("Ward").get(0)));
-			prepository.save(new Patient("Filius", "Flitwick", 54, "Male", "COVID-19 with Diabetes", "Contact with Known Case", crepository.findByName("Recovered").get(0)));
-			prepository.save(new Patient("Poppy", "Pomfrey", 32, "Female", "COVID-19", "Workplace Transmission", crepository.findByName("ICU").get(0)));
-			prepository.save(new Patient("Pomona", "Sprout", 42, "Female", "COVID-19", "Community Transmission", crepository.findByName("Home Quarantine").get(0)));    
+			prepository.save(new Patient("Filius", "Flitwick", 54, "Male", "COVID-19 with Diabetes", "Contact with Known Case", crepository.findByName("ICU").get(0)));
+			prepository.save(new Patient("Poppy", "Pomfrey", 32, "Female", "COVID-19", "Workplace Transmission", crepository.findByName("Recovered").get(0)));
+			prepository.save(new Patient("Pomona", "Sprout", 42, "Female", "COVID-19", "Community Transmission", crepository.findByName("Dead").get(0)));    
 			
 		
 			log.info("fetch all patients");

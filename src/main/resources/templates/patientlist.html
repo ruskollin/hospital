@@ -66,7 +66,8 @@
 					<th></th>
 					<th></th>
 				</tr>
-				<tr th:each="patient : ${patients}">
+				<tr th:each="patient : ${patients}"
+				 th:style="(${patient.category.name == 'Dead'} ? 'background-color: #ff6961') " >
 					<td><a th:href="@{/show/{id}(id=${patient.id})}"
 						th:text="${patient.firstName} + ' ' + ${patient.lastName}"></a></td>
 					<td th:text="${patient.age}"></td>
