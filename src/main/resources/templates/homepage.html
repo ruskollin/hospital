@@ -33,78 +33,58 @@
 			<p style="font-size:20px"> Diagnosis: <span th:text="${patient.diagnosis}"></span></p>
 			<p style="font-size:20px"> Mode of Transmission: <span th:text="${patient.modeOfTransmission}"></span></p>
 		</div>
-	</div>
 
 	<!--Vital Signs -->
-	<section>
-		<article>
-			<h2>Vital Signs</h2>
-			<a href="@{/release/{vitalId}(vitalId=${vitals.vitalId})}">Vitals</a>
-			
-			<ul th:each="vital: ${vitals}">
-				<li th:text="${vital.id}"></li>
-				<li th:text="${vital.firstName}"></li>
-				<li th:text="${vital.lastName}"></li>
-				<li th:text="${vital.temp}"></li>
-				<li th:text="${vital.respiratoryRate}"></li>
-				<li th:text="${vital.pulseRate}"></li>
-				<li th:text="${vital.systolic}"></li>
-				<li th:text="${vital.diastolic}"></li>
-			</ul>
-			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+	<div class = "container">>
+	<div>
+		<h2>Vital Signs</h2></br>
+		
+			<article class ="texts">
+				<p>Temperature: 37.7°C</p>
+				<p>Pulse Rate: 70</p>
+				<p>Respiratory Rate: 17</p>
+				<p>Blood Pressure: 120/80</p>
+			</br> </br> </br>
 		</article>
-
-		<!--Vital Signs -->
 		<nav>
 			<a href="/editVs" class="btn btn-success">Edit Vital Signs</a>
 		</nav>
-	</section>
-
-	<!--Doctor's Orders -->
-	<section>
-		<article>
-			<h2>Doctor's Orders</h2>
-			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+	</div>
+			<!--Doctor's Orders -->
+	<div>
+		<h2>Doctor's Orders</h2>
+		<article class ="texts">
+				<p>Oxygen at 5 lpm</p>
+				<p>Monitor I & O</p>
+				<p>Vital Signs q4</p>
+			</br> </br> </br> 
 		</article>
-
-		<!--Doctor's Orders -->
 		<nav>
-			<a href="/addOrders" class="btn btn-success">Add Doctor's Orders</a>
+			<a href="/addOrders" class="btn btn-success">Add Orders</a>
 		</nav>
-	</section>
-
+	</div>
+	
 	<!--Medications -->
-	<section>
-		<article>
-			<h2>List of Medications</h2>
-			</br> </br> </br> </br> </br> </br> </br> </br> </br>
+	<div>
+		<h2>Medications</h2>
+		<article class ="texts">
+				<p>Paracetamol 500mg q6 for fever</p>
+				<p>Antiviral drug</p>
+			</br> </br> </br>
 		</article>
-
-		<!--Medications -->
 		<nav>
 			<a href="/addMeds" class="btn btn-success">Add Medications</a>
 		</nav>
-	</section>
+	</div>
+	</div>
 
-	<!--Status of Patient -->
-	<section>
-		<article>
-			<h2>Status of Patient</h2>
-			</br> </br> </br> </br> </br> </br> </br> </br> </br>
-		</article>
 
-		<!--Discharge Form -->
-		<nav>
-			<a href="/dischargeForm" class="btn btn-success">Fill Discharge
-				Form</a>
-		</nav>
-	</section>
 
 	<!-- Footer -->
 	<div class="demog">
 		<h2>Demographical Status of Patients</h2>
 	</div>
-
+	</div>
 	<!-- End Page -->
 </body>
 </html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+<title>Covid</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+
+</head>
+
+<body>
+	<main class="main">
+		<aside class="sidebar">
+			<nav class="nav">
+				<ul>
+					<li class="active"><a style="color: orange; font-weight: bold"
+						th:text="${patient.firstName} +' '+ ${patient.lastName}"></a></li>
+					<li><a href="/patientlist">Patient List</a></li>
+					<li><a href="/userlist">User List</a></li>
+					<li><a href="/profile">Profile</a></li>
+					<li><a href="/logout">Sign Out</a></li>
+				</ul>
+			</nav>
+		</aside>
+	</main>
+	<section class="page2">
+		<div class="padding">
+			<div class="row container d-flex justify-content-center">
+				<div class="col-xl-6 col-md-12">
+					<div class="card user-card-full">
+						<div class="row m-l-0 m-r-0">
+							<div class="col-sm-4 bg-c-lite-green user-profile">
+								<div class="card-block text-center text-white">
+									<div class="m-b-25">
+										<span th:if="${patient.sex == 'Male'}"><img
+											style="width: 80%; height: 90%" th:src="@{/images/boy.gif}"
+											alt="male patient"></span> <span
+											th:if="${patient.sex == 'Female'}"><img
+											style="width: 80%; height: 90%" th:src="@{/images/girl.gif}"
+											alt="female patient"></span>
+									</div>
+									<h6 class="f-w-600"
+										th:text="${patient.firstName} +' '+ ${patient.lastName}"></h6>
+									<p class="m-b-10 f-w-600">Age:</p>
+									<h6 class="text-muted f-w-400" th:text="${patient.age}"></h6>
+									<p class="m-b-10 f-w-600">Sex:</p>
+									<h6 class="text-muted f-w-400" th:text="${patient.sex}"></h6>
+									<p class="m-b-10 f-w-600">Diagnosis:</p>
+									<h6 class="text-muted f-w-400" th:text="${patient.diagnosis}"></h6>
+									<p class="m-b-10 f-w-600">Mode of Transmission:</p>
+									<h6 class="text-muted f-w-400"
+										th:text="${patient.modeOfTransmission}">></h6>
+									<i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<div class="card-block">
+									<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Record</h6>
+									<div class="row">
+										<div class="col-sm-6">
+											</br></br>
+											<h2>Vital Signs</h2>
+											</br>
+											<article class="texts">
+												<p>Temperature: 37.7°C</p>
+												<p>Pulse Rate: 70</p>
+												<p>Respiratory Rate: 17</p>
+												<p>Blood Pressure: 120/80</p>
+												</br> </br> </br>
+											</article>
+										</div>
+										<div class="col-sm-6">
+											</br></br>
+											<h2>Medications</h2>
+											</br>
+											<article class="texts">
+												<p>Paracetamol 500mg q6 for fever</p>
+												<p>Remdesivir 100mg IV OD until discharge</p>
+												<p>Albuterol 2.5mg/0.5ml q6</p>
+												</br> </br> </br>
+											</article>
+										</div>
+										<div class="col-sm-6">
+											<a href="/editVs" class="btn btn-success">Edit Vital Signs</a>
+										</div>
+										<div class="col-sm-6">
+											<a href="/addMeds" class="btn btn-success">Add Medications</a>
+										</div>
+										<div class="col-sm-6" style="margin-top: 10%">
+										<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Status</h6>
+										</div>
+										<div class="col-sm-6">
+										</div>
+										<div class="col-sm-16">
+											<h2 th:text="${patient.category.name}">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

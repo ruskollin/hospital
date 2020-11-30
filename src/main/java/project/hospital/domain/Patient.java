@@ -23,22 +23,23 @@ public class Patient {
 	private String modeOfTransmission;
 	
     @ManyToOne
-	@JoinColumn(name = "vitalId")
+	@JoinColumn(name = "categoryId")
 	@JsonManagedReference
 	 
-	private Vitals vitals;
+	private Category category;
 	
 	public Patient() {
 		super();
 	}
 	
-	public Patient(String firstName, String lastName, int age, String sex, String diagnosis, String modeOfTransmission) {
+	public Patient(String firstName, String lastName, int age, String sex, String diagnosis, String modeOfTransmission, Category category) {
 		this.firstName=firstName;
 		this.lastName=lastName;
 		this.age=age;
 		this.sex=sex;
 		this.diagnosis=diagnosis;
 		this.modeOfTransmission=modeOfTransmission;
+		this.category=category;
 	}
 	
 	public Long getId() {
@@ -95,6 +96,14 @@ public class Patient {
 
 	public void setModeOfTransmission(String modeOfTransmission) {
 		this.modeOfTransmission = modeOfTransmission;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	@Override

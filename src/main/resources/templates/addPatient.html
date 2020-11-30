@@ -2,47 +2,85 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Patient List</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
-	 <link rel="stylesheet" th:href="@{css/design.css}" />
+<title>Patient List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{css/main.css}" />
 </head>
 
 <body>
-	<div class="centered">
-		<h1>Add patient</h1>
-		<form th:object="${patient}" th:action="@{save}" action="#" method="post">
+	<div class="page2" id="page-content">
+		<div class="padding">
+			<div class="row container d-flex justify-content-center">
+				<div class="col-xl-6 col-md-12">
+					<div class="card user-card-full">
+						<div class="row m-l-0 m-r-0">
+							<div class="col-sm-4 bg-c-lite-green user-profile">
+								<div class="card-block text-center text-white">
+									<div class="m-b-25">
+										<img style="width: 80%; height: 90%; margin-top: 30%"
+											th:src="@{/images/wash.gif}" alt="dog washing">
+									</div>
+									<i
+										class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<div class="card-block">
+									<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Add patient</h6>
+									<div class="row">
+										<div class="col-sm-6">
+											<form th:object="${patient}" th:action="@{save}" action="#"
+												method="post">
 
-		  	<label for="fname">First Name</label>
-			<input type="text" id="fname" th:field="*{firstName}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-		  	<label for="lname">Last Name</label>
-			<input type="text" id="lname" th:field="*{lastName}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-			<label for="age">Age</label>
-			<input type="text" id="age" th:field="*{age}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-			<label for="diagnosis">Diagnosis</label>
-			<input type="text" id="diagnosis" th:field="*{diagnosis}" /><br><br>
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-		  	<label for="sex">Sex</label><br>
-			<input type="radio" id="sex" th:field="*{sex}" value="Male"/> Male <br><br>
-			<input type="radio" id="sex" th:field="*{sex}" value="Female"/> Female <br/><br>
-			<div style="clear: both; display: block; height: 10px;"></div>
-			
-		  	<label for="mode">Mode Of Transmission</label> <br>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Community"/> Community <br><br>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Workplace"/> Workplace <br><br>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="International Travel"/> International Travel <br><br>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Contact with Known Case"/> Contact with Known Case <br/>
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<br>
-			<input type="submit" value="Save"></input>
-		</form>
+												<label for="fname">First Name</label> <input type="text"
+													id="fname" th:field="*{firstName}" />
+
+												<label for="lname">Last Name</label> <input type="text"
+													id="lname" th:field="*{lastName}" />
+												
+												<label for="age">Age</label> <input type="text" id="age"
+													th:field="*{age}" />
+												
+												<label for="diagnosis">Diagnosis</label> <input type="text"
+													id="diagnosis" th:field="*{diagnosis}" /><br> <br>
+												
+												<label for="sex">Sex</label><br> <input type="radio"
+													id="sex" th:field="*{sex}" value="Male" /> Male
+												<br> <input type="radio" id="sex" th:field="*{sex}"
+													value="Female" /> Female <br /> <br>
+												
+												<label for="mode">Mode Of Transmission</label> <br> <input
+													type="radio" id="modeOfTransmission"
+													th:field="*{modeOfTransmission}" value="Community" />
+												Community <br> <input type="radio"
+													id="modeOfTransmission" th:field="*{modeOfTransmission}"
+													value="Workplace" /> Workplace <br> <input
+													type="radio" id="modeOfTransmission"
+													th:field="*{modeOfTransmission}"
+													value="International Travel" /> International Travel
+												<br> <input type="radio" id="modeOfTransmission"
+													th:field="*{modeOfTransmission}"
+													value="Contact with Known Case" /> Known Contact
+												
+												<label for="category">Status</label> <select id="category"
+													th:field="*{category}" class="form-control">
+													<option th:each="category: ${categories}"
+														th:value="${category.categoryId}"
+														th:text="${category.name}"></option>
+												</select><br>
+													<input onclick="window.history.go(-1); return false;" type="submit" value="Cancel" class="btn btn-danger"></input>
+												<input type="submit" value="Save" class="btn btn-success"></input>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

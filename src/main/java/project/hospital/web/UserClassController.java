@@ -22,7 +22,7 @@ public class UserClassController {
     private UserRepository urepository; 
 	
     @RequestMapping(value = "/signup")
-    public String addStudent(Model model){
+    public String addPatient(Model model){
     	model.addAttribute("signupform", new SignupForm());
         return "signup";
     }	
@@ -48,6 +48,7 @@ public class UserClassController {
 		    	newUser.setPasswordHash(hashPwd);
 		    	newUser.setUsername(signupForm.getUsername());
 		    	newUser.setRole("USER");
+		    	newUser.setEmail(signupForm.getEmail());
 		    	if (urepository.findByUsername(signupForm.getUsername()) == null) { // Check if user exists
 		    		urepository.save(newUser);
 		    	}
@@ -66,5 +67,11 @@ public class UserClassController {
     	}
     	return "redirect:/login";    	
     }    
+    
+	@RequestMapping(value="/addUser")
+	public String goToAddUser(Model model) {
+		model.addAttribute("userClass", new UserClass());
+		return "addUser";
+	} 
     
 }

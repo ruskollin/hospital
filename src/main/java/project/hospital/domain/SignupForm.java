@@ -19,6 +19,10 @@ public class SignupForm {
 
     @NotEmpty
     private String role = "USER";
+  
+    @NotEmpty
+    @Size(min=7, max=30)
+    private String email= "";
 
 	public String getUsername() {
 		return username;
@@ -52,5 +56,12 @@ public class SignupForm {
 		this.role = role;
 	}
     
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
     
 }

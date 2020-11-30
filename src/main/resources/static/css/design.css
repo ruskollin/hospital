@@ -5,7 +5,7 @@
 body {
 	font-family: 'Overlock SC', Arial, Helvetica, sans-serif;
 	background-color: #CCDDDD;
-	background-image: url("/images/white.jpeg");
+	background-image: url("/images/land.jpg");
 	background-size: cover;
 	counter-reset: section;
 }
@@ -16,40 +16,48 @@ body {
   margin: auto;  
 }
 
-.patientInfo {
-  width: 100%;
-  max-width: 100%;
-  margin: auto;
-  height: 300px;
-}
-
 .centered {
+	text-align: center;
+	margin-top: 10%;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
   position: fixed;
-  top: 10%;
-  left: 20%;
-  margin-top: -50px;
-  margin-left: -100px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
-.containerLog{
-  text-align:center;
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-.containerLog form span:before {
-  counter-increment: section;
-  content:counter(section);
-  border:2px solid #4c2639;
-  width:47px;
-  height:46.5px;
-  color:#00FFFF;
-  display:inline-block;
-  border-radius:40%;
-  line-height:1.6em;
-  font-size:1.5em;
-  position:relative;
-  left:-24.5px;
-  top:-10px;
-  background:#2F1E27;
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 form{
@@ -98,6 +106,14 @@ input[type="radio"] {
 	display: inline-block;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.texts{
+	text-indent: 10%;
+}
+
+.page2 {
+	margin-left:40%;
 }
 
 .pageTit {
@@ -257,7 +273,7 @@ section {
 	border:2px solid black;
 	width: 80%;
 	padding:10px; 
-	background: white;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -274,6 +290,9 @@ section:after {
 	text-align: center;
 }
 
+img {
+	margin-top:2%;
+}
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
 

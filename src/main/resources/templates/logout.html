@@ -5,17 +5,20 @@
 <head>
 
 <title>Spring Security Example</title>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-<link rel="stylesheet" th:href="@{/css/design.css}" />
+<link rel="stylesheet" th:href="@{css/main.css}" />
 
 </head>
 <body>
-	<div class="centered">
-
-		<h1 th:inline="text">Wanna go back inside?</h1>
-		<a href="/login" class="btn btn-warning">Go Back Inside?</a>
-
+	<div class="page2">
+		<div class="container" style="margin-left:40%; margin-top:10%">
+			<img style="width:50%; height:50%" th:src="@{/images/takecare.gif}" alt="random decor">
+		</div>
+		<div class="container" style="margin-left:41%">
+			<a href="/login" class="btn btn-warning">Go Back Inside?</a>
+		</div>
 	</div>
 </body>
 </html>

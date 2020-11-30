@@ -3,53 +3,94 @@
 <head>
 <title>Patient List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
-	 <link rel="stylesheet" th:href="@{css/design.css}" />
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{css/main.css}" />
 </head>
 <body>
-	<div class="pageTitle">
-		<div class="pageTit">
-			<br>
-			<h1>Confirmed Cases</h1>
-		</div>
-		<div class="pageTit1">
-			<p th:text="${#lists.size(patients)}">[Patients]</p>	
-		</div>
-		<div class="pageTit">
-			<br>
-			<p th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}">
-		</div>
-	</div>
+	<main class="main">
+		<aside class="sidebar">
+			<nav class="nav">
+				<ul>
+					<li class="active"><a href="/patientlist">Patient List</a></li>
+					<li><a href="/userlist">User List</a></li>
+					<li><a href="/profile">Profile</a></li>
+					<li><a href="/logout">Sign Out</a></li>
+				</ul>
+			</nav>
+		</aside>
+		<div class="page2">
+			<div class="pageTitle">
+				<br>
+				<h1>Confirmed Cases</h1>
+			</div>
+			<div class="pageTit1">
+				<span th:if="null"><p>0</p></span> <span
+					th:text="${#lists.size(patients)}">[Patients]</span></span>
+
+			</div>
+			<div class="pageTit">
+				<p style="font-size: 20px"
+					th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}">
+			</div>
+
+			<div class="pageTitle">
+				<form>
+					<div>
+						<input type="text" name="patient"> <input type="submit"
+							value="Search" class="btn btn-info">
+					</div>
+				</form>
+			</div>
 
 
-	<table class="table table-striped">
-		<tr>
-			<th><strong>Id</strong></th>
-			<th><strong>Name</strong></th>
-			<th><strong>Age</strong></th>
-			<th><strong>Sex</strong></th>
-			<th><strong>Diagnosis</strong></th>
-			<th><strong>Mode of Transmission</strong></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr th:each="patient : ${patients}">
-			<td th:text="${patient.id}"></td>
-			<td><a th:href="@{/show/{id}(id=${patient.id})}"
-				th:text="${patient.firstName} + ' ' + ${patient.lastName}"></a></td>
-			<td th:text="${patient.age}"></td>
-			<td th:text="${patient.sex}"></td>
-			<td th:text="${patient.diagnosis}"></td>
-			<td th:text="${patient.modeOfTransmission}"></td>
-			<td><a th:href="@{/delete/{id}(id=${patient.id})}"
-				class="btn btn-danger">Delete</a></td>
-			<td><a th:href="@{/modify/{id}(id=${patient.id})}"
-				class="btn btn-warning">Modify</a></td>
-		</tr>
-	</table>
-	<a href="/add" class="btn btn-success">Add Patient</a>
-	<a href="/userlist" class="btn btn-success">Show Users</a>
-	<a href="/logout" class="btn btn-danger">Sign Out</a>
+			<table class="table table-striped">
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Sex</th>
+					<th>Diagnosis</th>
+					<th>Mode of Transmission</th>
+					<th>Status
+						<form action="#" th:action="@{patientlist}"
+							th:object="${category}" method="post">
+							<div class="row">
+								<select id="category" th:field="*{categoryId}" name="category"
+									class="col form-control">
+									<option th:each="cat : ${categories}"
+										th:value="${cat.categoryId}" th:text="${cat.name}">										
+									</option>
+								</select> <input type="submit" value="Search" class="btn btn-info" />
+							</div>
+						</form>
+					</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr th:each="patient : ${patients}">
+					<td><a th:href="@{/show/{id}(id=${patient.id})}"
+						th:text="${patient.firstName} + ' ' + ${patient.lastName}"></a></td>
+					<td th:text="${patient.age}"></td>
+					<td th:text="${patient.sex}"></td>
+					<td th:text="${patient.diagnosis}"></td>
+					<td th:text="${patient.modeOfTransmission}"></td>
+					<td th:text="${patient.category.name}"></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="@{/delete/{id}(id=${patient.id})}" class="btn btn-danger"
+						onClick="return confirm('Are you sure?')">Delete</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="@{/modify/{id}(id=${patient.id})}"
+						class="btn btn-warning">Modify</a></td>
+				</tr>
+			</table>
+			<div class="addp">
+				<br>
+				<p sec:authorize="hasAuthority('ADMIN')">
+					<a href="/add" class="btn btn-success">Add Patient</a>
+				</p>
+			</div>
+		</div>
+
+	</main>
 
 </body>
 </html>

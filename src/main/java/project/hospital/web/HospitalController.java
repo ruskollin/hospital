@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import project.hospital.domain.Category;
+import project.hospital.domain.CategoryRepository;
 import project.hospital.domain.Patient;
 import project.hospital.domain.PatientRepository;
 import project.hospital.domain.UserClass;
 import project.hospital.domain.UserRepository;
-import project.hospital.domain.Vitals;
-import project.hospital.domain.VitalsRepository;
 
 @Controller
 public class HospitalController {
@@ -26,7 +27,7 @@ public class HospitalController {
 	private PatientRepository repository;
 	
 	@Autowired
-	private VitalsRepository vrepository;
+	private CategoryRepository crepository;
 	
 	@Autowired
 	private UserRepository urepository;
@@ -36,11 +37,29 @@ public class HospitalController {
 		return "login";
 	} 
 	
-    @RequestMapping(value="/patientlist")
+	@RequestMapping(value={"/main"})
+	public String secret() {
+		return "main";
+	} 
+	
+	
+    @RequestMapping(value="/patientlist", method=RequestMethod.GET)
     public String patientList(Model model) {	
+    	model.addAttribute("category", new Category());
         model.addAttribute("patients", repository.findAll());
+        model.addAttribute("categories", crepository.findAll());
         return "patientlist";
     }
+    
+	@RequestMapping(value="/patientlist", method=RequestMethod.POST)
+	public String patientSearch(Category category, Model model) {
+		List<Patient> patients = repository.findByCategory(crepository.findById(category.getCategoryId()).get());
+		
+		model.addAttribute("patients", patients);
+		model.addAttribute("category", new Category());
+		model.addAttribute("categories", crepository.findAll());
+		return "patientlist";
+	}
     
     @RequestMapping(value="/patients", method = RequestMethod.GET)
     public @ResponseBody List<Patient> patientListRest() {	
@@ -55,12 +74,14 @@ public class HospitalController {
     @RequestMapping(value = "/add")
     public String addPatient(Model model){
     	model.addAttribute("patient", new Patient());
+    	model.addAttribute("categories", crepository.findAll());
         return "addPatient";
     }    
          
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Patient patient){
+    public String save(Patient patient, Category category){
         repository.save(patient);
+        crepository.save(category);
         return "redirect:patientlist";
     }    
     
@@ -69,17 +90,10 @@ public class HospitalController {
     	Optional<Patient> optionalPatient = repository.findById(patientId);
     	Patient patient = optionalPatient.get();
     	model.addAttribute("patient", patient);
-        return "homepage";
+    	model.addAttribute("categories", crepository.findAll());
+        return "second";
     } 
-    
-    @RequestMapping(value = "/release/{vitalId}", method = RequestMethod.GET)
-    public String releaseVitals(@PathVariable("vitalId") Long vitalId, Model model) {
-    	Optional<Vitals> optionalVitals = vrepository.findById(vitalId);
-    	Vitals vitals = optionalVitals.get();
-    	model.addAttribute("vitals", vitals);
-        return "vitals";
-    } 
-    
+        
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deletePatient(@PathVariable("id") Long patientId, Model model) {
     	repository.deleteById(patientId);
@@ -89,12 +103,14 @@ public class HospitalController {
     @RequestMapping(value = "/modify/{id}", method = RequestMethod.GET)
     public String editPatient(@PathVariable("id") Long patientId, Model model) {
     	model.addAttribute("patient", repository.findById(patientId));
+    	model.addAttribute("categories", crepository.findAll());
     	return "modifyPatient";
     }  
     
 	@RequestMapping(value = "/process", method = RequestMethod.GET)
-	public String PatientSubmit(@ModelAttribute Patient patient) {
+	public String PatientSubmit(@ModelAttribute Patient patient, Category category) {
 		repository.save(patient);
+		crepository.save(category);
 		return "redirect:/patientlist";
 	}
 	
@@ -128,13 +144,7 @@ public class HospitalController {
         urepository.save(userClass);
         return "redirect:userlist";
     }  
-    
-	@RequestMapping(value="/addUser")
-	public String goToAddUser(Model model) {
-		model.addAttribute("userClass", new UserClass());
-		return "addUser";
-	} 
-    
+
     @RequestMapping(value="/userlist")
     public String userList(Model model) {	
         model.addAttribute("userClasses", urepository.findAll());
@@ -146,4 +156,27 @@ public class HospitalController {
     	urepository.deleteById(userId);
         return "redirect:../userlist";
     } 
+    
+	@RequestMapping(value={"/forgotPassword"})
+	public String forgot() {
+		return "forgotPassword";
+	} 
+	
+	@RequestMapping(value="/profile")
+	public String profile() {
+		return "profile";
+	} 
+	
+	@RequestMapping("/register")
+	public String submitForm() {
+	    return "success";
+	}
+	
+	@RequestMapping(value = "/search",method=RequestMethod.POST)
+	public String getByName(@RequestParam("firstName") String firstName, Model model) {
+	    List<Patient> patient = repository.findByFirstName(firstName);
+	    model.addAttribute("patients", patient);
+	    return "welcome";
+	}
+	
 }

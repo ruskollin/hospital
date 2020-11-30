@@ -6,43 +6,24 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     	<title>Spring Security Example </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
         <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
-	 	<link rel="stylesheet" th:href="@{css/design.css}" />
+	 	<link rel="stylesheet" th:href="@{css/others.css}" />
 	</head>
     <body>
     	
-    	<div class="centered">
+    	<div class="logging">
         <div th:if="${param.logout}">
             You have been logged out.
         </div>
-        
-        
-        <div class="containerLog">
-        	<form th:action="@{/login}" method="post">
-        		<div class="fields">
-      				<span>
-            			<input type="text" name="username" placeholder="Username"/> <br />
-            		</span>
-            		<br />
-     				<span>
-            			<input type="password" name="password" placeholder="Password"/> <br />
-            		</span>
-            	</div>
-            	<br>
-            	<button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
-        	</form>
+         <p class="sign" align="center">Sign in</p>
+        	<form class="form1" th:action="@{/login}" method="post">
+            			<input class="un" type="text" name="username" placeholder="Username"/> <br />
+            			<input class="pass" type="password" name="password" placeholder="Password"/> <br />
+
+            	<button type="submit" class="send">Let me in.</button>
         	
-        	
-        </div>
-        <br>
-        <div class="containerLog">
-        	<p style="font-size: 10px">Your name is cat</p>
-        	<p style="font-size: 10px">The password is password</p>
-       </div>
-       
-       	<div style="padding: 20%">
-       		<a class="btn btn-primary btn-block btn-large" th:href="@{/signup}">Sign-up</a>
-		</div>
-       
-       </div>
+    	    <a class="forgot" th:href="@{/signup}">Sign-up</a>
+			<a class="forgot" href="/forgotPassword">Forgot Password</a>
+			 </form>
+       	</div>
     </body>
 </html>

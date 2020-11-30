@@ -5,12 +5,31 @@
     <title>Modify Patient Info</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
      <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-	 <link rel="stylesheet" th:href="@{/css/design.css}" />
+	 <link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 
-<body>
-	<div class="centered">
-	<h1>Edit patient details</h1>
+<body>	
+	<div class="page2" id="page-content">
+		<div class="padding">
+			<div class="row container d-flex justify-content-center">
+				<div class="col-xl-6 col-md-12">
+					<div class="card user-card-full">
+						<div class="row m-l-0 m-r-0">
+							<div class="col-sm-4 bg-c-lite-green user-profile">
+								<div class="card-block text-center text-white">
+									<div class="m-b-25">
+										<img style="width: 80%; height: 90%; margin-top: 30%"
+											th:src="@{/images/wash.gif}" alt="dog washing">
+									</div>
+									<i
+										class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<div class="card-block">
+									<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Edit Patient Details</h6>
+									<div class="row">
+										<div class="col-sm-6">
 		<form th:object="${patient}" th:action="@{/process}" action="#" method="get">
 		
 			<label for="firstName">First Name</label>
@@ -36,14 +55,31 @@
 			
 			
 			<label for="modeOfTransmission">Mode of Transmission</label> <br/>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Community"/> Community <br/>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Workplace"/> Workplace <br/>
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Community Transmission"/> Community <br/>
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Workplace Transmission"/> Workplace <br/>
 			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="International Travel"/> International Travel <br/>
-			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Contact with Known Case"/> Contact with Known Case <br/>
+			<input type="radio" id="modeOfTransmission" th:field="*{modeOfTransmission}" value="Contact with Known Case"/> Known Case <br/>
 			<div style="clear: both; display: block; height: 10px;"></div>	
-			<br>					
-			<input type="submit" value="Save"></input>
+			
+		  	<label for="category">Status</label>
+			 <select id="category" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+    		</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input onclick="window.history.go(-1); return false;" type="submit" value="Cancel" class="btn btn-danger"></input>
+							
+			<input type="submit" value="Save" class="btn btn-success"></input>
+			
 		</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
