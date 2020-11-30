@@ -6,8 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
-	List<Patient> findByCategory(Category category);
-	
-	List<Patient> findByFirstName(String firstName);
-	
+	List<Patient> findByCategory(Category category);	
 }

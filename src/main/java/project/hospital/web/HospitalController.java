@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.hospital.domain.Category;
@@ -170,13 +169,6 @@ public class HospitalController {
 	@RequestMapping("/register")
 	public String submitForm() {
 	    return "success";
-	}
-	
-	@RequestMapping(value = "/search",method=RequestMethod.POST)
-	public String getByName(@RequestParam("firstName") String firstName, Model model) {
-	    List<Patient> patient = repository.findByFirstName(firstName);
-	    model.addAttribute("patients", patient);
-	    return "welcome";
 	}
 	
 }

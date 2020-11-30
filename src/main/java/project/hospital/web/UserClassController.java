@@ -26,7 +26,7 @@ public class UserClassController {
     	model.addAttribute("signupform", new SignupForm());
         return "signup";
     }	
-    
+
     
     /**
      * Create new user

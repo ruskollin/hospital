@@ -12,7 +12,8 @@
 			<nav class="nav">
 				<ul>
 					<li class="active"><a href="/patientlist">Patient List</a></li>
-					<li sec:authorize="hasAuthority('ADMIN')"><a href="/userlist">User List</a></li>
+					<li sec:authorize="hasAuthority('ADMIN')"><a href="/userlist">User
+							List</a></li>
 					<li><a href="/profile">Profile</a></li>
 					<li><a href="/logout">Sign Out</a></li>
 				</ul>
@@ -33,16 +34,6 @@
 					th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY')}">
 			</div>
 
-			<div class="pageTitle">
-				<form>
-					<div>
-						<input type="text" name="patient"> <input type="submit"
-							value="Search" class="btn btn-info">
-					</div>
-				</form>
-			</div>
-
-
 			<table class="table table-striped">
 				<tr>
 					<th>Name</th>
@@ -57,8 +48,7 @@
 								<select id="category" th:field="*{categoryId}" name="category"
 									class="col form-control">
 									<option th:each="cat : ${categories}"
-										th:value="${cat.categoryId}" th:text="${cat.name}">										
-									</option>
+										th:value="${cat.categoryId}" th:text="${cat.name}"></option>
 								</select> <input type="submit" value="Search" class="btn btn-info" />
 							</div>
 						</form>
@@ -67,7 +57,7 @@
 					<th></th>
 				</tr>
 				<tr th:each="patient : ${patients}"
-				 th:style="(${patient.category.name == 'Dead'} ? 'background-color: #ff6961') " >
+					th:style="(${patient.category.name == 'Dead'} ? 'background-color: #ff6961') ">
 					<td><a th:href="@{/show/{id}(id=${patient.id})}"
 						th:text="${patient.firstName} + ' ' + ${patient.lastName}"></a></td>
 					<td th:text="${patient.age}"></td>
@@ -75,9 +65,11 @@
 					<td th:text="${patient.diagnosis}"></td>
 					<td th:text="${patient.modeOfTransmission}"></td>
 					<td th:text="${patient.category.name}"></td>
+
 					<td sec:authorize="hasAuthority('ADMIN')"><a
 						th:href="@{/delete/{id}(id=${patient.id})}" class="btn btn-danger"
 						onClick="return confirm('Are you sure?')">Delete</a></td>
+
 					<td sec:authorize="hasAuthority('ADMIN')"><a
 						th:href="@{/modify/{id}(id=${patient.id})}"
 						class="btn btn-warning">Modify</a></td>
@@ -92,6 +84,5 @@
 		</div>
 
 	</main>
-
 </body>
 </html>
