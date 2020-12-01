@@ -36,12 +36,6 @@ public class HospitalController {
 		return "login";
 	} 
 	
-	@RequestMapping(value={"/main"})
-	public String secret() {
-		return "main";
-	} 
-	
-	
     @RequestMapping(value="/patientlist", method=RequestMethod.GET)
     public String patientList(Model model) {	
     	model.addAttribute("category", new Category());

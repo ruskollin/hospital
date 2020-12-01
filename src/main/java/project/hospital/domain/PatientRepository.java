@@ -2,9 +2,10 @@ package project.hospital.domain;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface PatientRepository extends CrudRepository<Patient, Long> {
+public interface PatientRepository extends PagingAndSortingRepository<Patient, Long> {
 
-	List<Patient> findByCategory(Category category);	
+	List<Patient> findByCategory(Category category);
+		
 }
