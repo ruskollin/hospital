@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Bean;
 
 import project.hospital.domain.Category;
 import project.hospital.domain.CategoryRepository;
+import project.hospital.domain.MedicineRepository;
 import project.hospital.domain.Patient;
 import project.hospital.domain.PatientRepository;
 import project.hospital.domain.UserClass;
 import project.hospital.domain.UserRepository;
+import project.hospital.domain.VitalsRepository;
 
 @SpringBootApplication
 public class HospitalApplication {
@@ -23,7 +25,7 @@ public class HospitalApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(PatientRepository prepository, CategoryRepository crepository, UserRepository urepository) {
+	public CommandLineRunner demo(PatientRepository prepository, CategoryRepository crepository, UserRepository urepository, MedicineRepository mrepository, VitalsRepository vrepository) {
 		return (args) -> {
 
 			log.info("save a couple of categories");

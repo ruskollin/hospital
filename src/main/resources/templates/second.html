@@ -18,7 +18,8 @@
 					<li class="active"><a style="color: orange; font-weight: bold"
 						th:text="${patient.firstName} +' '+ ${patient.lastName}"></a></li>
 					<li><a href="/patientlist">Patient List</a></li>
-					<li sec:authorize="hasAuthority('ADMIN')"><a href="/userlist">User List</a></li>
+					<li sec:authorize="hasAuthority('ADMIN')"><a href="/userlist">User
+							List</a></li>
 					<li><a href="/profile">Profile</a></li>
 					<li><a href="/logout">Sign Out</a></li>
 				</ul>
@@ -52,7 +53,8 @@
 									<p class="m-b-10 f-w-600">Mode of Transmission:</p>
 									<h6 class="text-muted f-w-400"
 										th:text="${patient.modeOfTransmission}">></h6>
-									<i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+									<i
+										class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 
 								</div>
 							</div>
@@ -61,7 +63,7 @@
 									<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Record</h6>
 									<div class="row">
 										<div class="col-sm-6">
-										
+
 											<h2>Vital Signs</h2>
 											</br>
 											<article class="texts">
@@ -72,8 +74,8 @@
 												</br> </br> </br>
 											</article>
 										</div>
-										<div class="col-sm-6">
-											
+										<div class="col-sm-6" th:object="${patient}">
+
 											<h2>Medications</h2>
 											</br>
 											<article class="texts">
@@ -84,16 +86,17 @@
 											</article>
 										</div>
 										<div class="col-sm-6">
-											<a href="/editVs" class="btn btn-success">Edit Vital Signs</a>
+											<a href="/editVs" class="btn btn-success">Edit Vital
+												Signs</a>
 										</div>
 										<div class="col-sm-6">
-											<a href="/addMeds" class="btn btn-success">Add Medications</a>
+											<a href="/addMeds" class="btn btn-success">Add
+												Medications</a>
 										</div>
 										<div class="col-sm-6" style="margin-top: 10%">
-										<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Status</h6>
+											<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Status</h6>
 										</div>
-										<div class="col-sm-6">
-										</div>
+										<div class="col-sm-6"></div>
 										<div class="col-sm-16">
 											<h2 th:text="${patient.category.name}">
 										</div>

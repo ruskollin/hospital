@@ -45,11 +45,9 @@
 						<form action="#" th:action="@{patientlist}"
 							th:object="${category}" method="post">
 							<div class="row">
-								<select id="category" th:field="*{categoryId}" name="category"
-									class="col form-control">
-									<option th:each="status : ${categories}"
-										th:value="${status.categoryId}" th:text="${status.name}"></option>
-								</select> <input type="submit" value="Search" class="btn btn-info" />
+								<select id="category" th:field="*{categoryId}" name="category" class="col form-control">
+									<option th:each="status : ${categories}" th:value="${status.categoryId}" th:text="${status.name}"></option>
+								</select> <input type="submit" value="->" class="btn btn-info" />
 							</div>
 						</form>
 					</th>

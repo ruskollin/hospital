@@ -1,12 +1,18 @@
 package project.hospital.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -25,11 +31,15 @@ public class Patient {
     @ManyToOne
 	@JoinColumn(name = "categoryId")
 	@JsonManagedReference
-	 
 	private Category category;
+    
+    @JsonBackReference
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "patient", orphanRemoval = true)
+	private List<Medicine> medicines;
 	
 	public Patient() {
 		super();
+		this.medicines = new ArrayList<Medicine>();
 	}
 	
 	public Patient(String firstName, String lastName, int age, String sex, String diagnosis, String modeOfTransmission, Category category) {
@@ -40,6 +50,18 @@ public class Patient {
 		this.diagnosis=diagnosis;
 		this.modeOfTransmission=modeOfTransmission;
 		this.category=category;
+		this.medicines = new ArrayList<Medicine>();
+	}
+	
+	public Patient(String firstName, String lastName, int age, String sex, String diagnosis, String modeOfTransmission, Category category, List<Medicine> medicines) {
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.age=age;
+		this.sex=sex;
+		this.diagnosis=diagnosis;
+		this.modeOfTransmission=modeOfTransmission;
+		this.category=category;
+		this.medicines = medicines;
 	}
 	
 	public Long getId() {
@@ -106,6 +128,24 @@ public class Patient {
 		this.category = category;
 	}
 	
+	public List<Medicine> getMedicines() {
+		return medicines;
+	}
+
+	public void setMedicines(List<Medicine> medicines) {
+		this.medicines = medicines;
+	}
+	
+	public void addMedicine(Medicine medicine) {
+		medicines.add(medicine);
+        medicine.setPatient(this);
+    }
+ 
+    public void removeMedicine(Medicine medicine) {
+    	medicine.setPatient(null);
+        this.medicines.remove(medicine);
+    }
+    
 	@Override
 	public String toString() {
 		return "Patient [id =" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", sex=" + sex + ", diagnosis=" + diagnosis + ", modeOfTransmission=" + modeOfTransmission + "]";

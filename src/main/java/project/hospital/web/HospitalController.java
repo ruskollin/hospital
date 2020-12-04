@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.hospital.domain.Category;
 import project.hospital.domain.CategoryRepository;
+import project.hospital.domain.MedicineRepository;
 import project.hospital.domain.Patient;
 import project.hospital.domain.PatientRepository;
 import project.hospital.domain.UserClass;
@@ -30,6 +31,9 @@ public class HospitalController {
 	
 	@Autowired
 	private UserRepository urepository;
+	
+	@Autowired
+	private MedicineRepository mrepository;
 	
 	@RequestMapping(value={"/login", "/", "/home"})
 	public String login() {
@@ -111,20 +115,40 @@ public class HospitalController {
 	public String editVitals() {
 		return "editVs";
 	} 
+
+//	@RequestMapping(value="/medicines", method=RequestMethod.GET)
+//	public @ResponseBody List<Medicine> medicineList() {
+//		return (List<Medicine>) mrepository.findAll();
+//	}
+//	
+//	@RequestMapping(value="/add", method=RequestMethod.GET)
+//	public String addMedicines(Model model) {
+//		Patient person = new Patient();
+//		for (int i = 0; i < 5; i++) {
+//			person.addMedicine(new Medicine());
+//		}
+//
+//		model.addAttribute("patient", person);
+//		model.addAttribute("categories", crepository.findAll());
+//		return "addMeds";
+//	}
+//	
+//	@RequestMapping(value="/addMeds", method=RequestMethod.POST, params="action=AddMedicine")
+//	public String addMedicine(Patient patient, Model model) {
+//		patient.addMedicine(new Medicine());;
+//		model.addAttribute("patient", patient);
+//		model.addAttribute("categories", crepository.findAll());
+//		return "addMeds";
+//	} 
 	
 	@RequestMapping(value="/addMeds")
-	public String addMedications() {
+	public String addMeds() {
 		return "addMeds";
 	} 
 	
 	@RequestMapping(value="/addOrders")
 	public String addOrders() {
 		return "addOrders";
-	} 
-	
-	@RequestMapping(value="/dischargeForm")
-	public String dischargeForm() {
-		return "dischargeForm";
 	} 
 	
 	@RequestMapping(value="/logout")

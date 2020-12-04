@@ -24,20 +24,18 @@
 							</div>
 							<div class="col-sm-8">
 								<div class="card-block">
-									<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Add
-										Medications</h6>
+									<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Add Medications</h6>
 									<div class="row">
 										<div class="col-sm-6">
-											<form id="usrformMeds" th:action="@{/register}">
-												<span contenteditable="true"> <label for="note"></label>
-													<input type="text" id="note"
-													style="height: 300px; margin: auto; width: 400px; font-size: 14pt" />
-												</span>
+											<form id="usrform" th:action="@{/register}">
+												<label for="medicine">Medicine</label> <input type="text" id="medicine" />
+												<label for="dose">Dose</label> <input type="text" id="dose"/>
+												<label for="unit">Unit</label> <input type="text" id="unit"/>
+												<label for="route">Route</label> <input type="text" id="route"/>
+												<label for="frequency">Frequency</label> <input type="text" id="frequency"/>
 												<div style="clear: both; display: block; height: 10px;"></div>
-												<br> <input type="submit" value="Save Medication Order" class="btn btn-success"></input><br>
-												<br> <input
-													onclick="window.history.go(-1); return false;"
-													type="submit" value="Cancel" class="btn btn-danger"></input>
+												<br><input type="submit" value="Save Order" class="btn btn-success" ></input><br>
+												<br> <input onclick="window.history.go(-1); return false;" type="submit" value="Cancel" class="btn btn-danger"></input>
 											</form>
 										</div>
 									</div>
